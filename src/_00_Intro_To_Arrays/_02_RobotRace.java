@@ -66,9 +66,33 @@ public class _02_RobotRace {
 			// 4. make each robot start at the bottom of the screen, side by side, facing up
 			ro[i].moveTo(0 + i * 60, 600);
 		}
-		int circle = 0;
-		int chicken = 0;
-		while(circle ==0) {
+		int notcircle = 0;
+		//int chicken = 0;
+		while(notcircle ==0) {
+			for(int q = 0; q < 5; q++) {
+				ro[q].move( rand.nextInt(50));
+				if(ro[q].getX()>=900 && ro[q].getY()>=600) {
+					ro[q].turn(270);
+					
+				} else if (ro[q].getX()>=900 && ro[q].getY()<=10) {
+					ro[q].turn(270);
+					System.out.print("beep");
+					//System.out.print(ro[q].getX() + " " + ro[q].getY());
+					
+				} else if (ro[q].getX()<=10 && ro[q].getY()<=10) {
+					System.out.print("ding");
+					ro[q].turn(270);
+					
+				} else if (ro[q].getX() <= 10 && (ro[q].getY() >=500 && ro[q].getY() <600 ) ) {
+					System.out.print("...");
+					ro[q].turn(270);
+					ro[q].sparkle();
+					System.out.println("The winner is Robot#" + q);
+					notcircle = 1;
+				}
+			}
+			
+			/*
 			for(int q = 0; q < 5; q++) {
 				ro[q].move( rand.nextInt(50));
 				if(ro[q].getY()<=0) {
@@ -94,13 +118,14 @@ public class _02_RobotRace {
 					}
 					
 					if(chicken >=4) {
-						circle = 1;
+						notcircle = 1;
 						System.out.println( "Robot #" + z + " is the winner!!!");
 						ro[z].sparkle();
 					}
 					z=5;
+					
 				}
-		    }
+		    }*/
 		}
 
 	// 8. try different races with different amounts of robots.
